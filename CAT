@@ -1,0 +1,22 @@
+<h2>Cat CAT </h2>
+<button onclick="enableCameraAndMic()">Start</button>
+<video id="video" autoplay playsinline width="640" height="480"></video>
+
+<script>
+  async function enableCameraAndMic() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: true
+      });
+
+      const videoElement = document.getElementById('video');
+      videoElement.srcObject = stream;
+
+      console.log("Camera and microphone access granted");
+    } catch (err) {
+      console.error("Access denied or error:", err);
+      alert("Camera/Microphone access denied or failed.");
+    }
+  }
+</script>
